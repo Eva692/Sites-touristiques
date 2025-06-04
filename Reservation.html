@@ -1,0 +1,75 @@
+.....
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reservation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container"> 
+        <div class="wrapper">
+            <div class="input_box">
+                <input type="text" id="fName" placeholder="Nom">
+            </div>
+            <div class="input_box">
+                <input type="text" id="lName" placeholder="prenom">
+            </div>
+            <div class="input_box">
+                <input type="Number" id="Cartes" placeholder="Entrez votre argent en espece " requiered>
+				<form action="reservation.php" method="post">
+        <label for="phone">Numéro de téléphone :</label><br>
+        <input type="tel" id="phone" name="phone" required><br><br>
+
+        <label for="date">Date de réservation :</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="time">Heure :</label><br>
+        <input type="time" id="time" name="time" required><br><br>
+
+        <label>Nombre de personnes :</label><br>
+        <select name="people">
+            <option value="1">1 personne</option>
+            <option value="2">2 personnes</option>
+            <option value="3">3 personnes</option>
+            <option value="4">4 personnes</option>
+            <option value="5">5 personnes ou plus</option>
+        </select><br><br>
+
+        <label>Services supplémentaires :</label><br>
+        <input type="checkbox" name="services[]" value="terrasse"> Terrasse<br>
+        <input type="checkbox" name="services[]" value="privé"> Espace privé<br>
+        <input type="checkbox" name="services[]" value="menu_végétarien"> Menu végétarien<br><br>
+
+            </div>
+            <button id="submit">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('submit').addEventListener('click', () => {
+            const FiName = document.getElementById('fName').value.trim();
+            const laName = document.getElementById('lName').value.trim();
+            const email = document.getElementById('emailF').value.trim();
+            const paField = document.getElementById('passF').value.trim();
+
+            if(FiName === '' || laName === '' || email === '' || paField === '' || phone === ''|| data === ''|| time === '') {
+                alert('Veuillez remplir  les autres champs');
+            } else {
+                localStorage.setItem('firstName', FiName);
+                localStorage.setItem('lastName', laName);
+                   localStorage.setItem('time', time);
+				   localStorage.setItem('data',data);
+                localStorage.setItem('Cartes',Cartes);
+                window.location = 'thanks.html';
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+...
