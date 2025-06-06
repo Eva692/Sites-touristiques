@@ -1,75 +1,97 @@
-.....
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>reservation</title>
+    <title>Réservation</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #confirmation {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Très élevé pour passer DEVANT tout */
+        }
+        #confirmation .message {
+            background: #fff;
+            padding: 2em;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            box-shadow: 0 0 10px #0002;
+        }
+        /* Assure-toi que ton formulaire n'a PAS de z-index élevé */
+        .container, .wrapper, form {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container"> 
         <div class="wrapper">
-            <div class="input_box">
-                <input type="text" id="fName" placeholder="Nom">
-            </div>
-            <div class="input_box">
-                <input type="text" id="lName" placeholder="prenom">
-            </div>
-            <div class="input_box">
-                <input type="Number" id="Cartes" placeholder="Entrez votre argent en espece " requiered>
-				<form action="reservation.php" method="post">
-        <label for="phone">Numéro de téléphone :</label><br>
-        <input type="tel" id="phone" name="phone" required><br><br>
+            <form id="reservationForm" action="reservation.php" method="post">
+                <div class="input_box">
+                    <input type="text" id="fName" name="fName" placeholder="Nom" required>
+                </div>
+                <div class="input_box">
+                    <input type="text" id="lName" name="lName" placeholder="Prénom" required>
+                </div>
+                <div class="input_box">
+                    <input type="number" id="Cartes" name="Cartes" placeholder="Entrez votre argent en espèce" required>
+                </div>
+                <div class="input_box">
+                    <input type="tel" id="phone" name="phone" placeholder="Numéro de téléphone" required>
+                </div>
+                <div class="input_box">
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="input_box">
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <div class="input_box">
+                    <select name="people" required>
+                        <option value="">Nombre de personnes</option>
+                        <option value="1">1 personne</option>
+                        <option value="2">2 personnes</option>
+                        <option value="3">3 personnes</option>
+                        <option value="4">4 personnes</option>
+                        <option value="5">5 personnes ou plus</option>
+                    </select>
+                </div>
+                <div class="input_box">
+                    <label>Services supplémentaires :</label><br>
+                    <input type="checkbox" name="services[]" value="terrasse"> Terrasse
+                    <input type="checkbox" name="services[]" value="privé"> Espace privé
+                    <input type="checkbox" name="services[]" value="menu_végétarien"> Menu végétarien
+                </div>
+                <button type="submit" id="submit">Réserver</button>
+            </form>
+        </div>
+    </div>
 
-        <label for="date">Date de réservation :</label><br>
-        <input type="date" id="date" name="date" required><br><br>
-
-        <label for="time">Heure :</label><br>
-        <input type="time" id="time" name="time" required><br><br>
-
-        <label>Nombre de personnes :</label><br>
-        <select name="people">
-            <option value="1">1 personne</option>
-            <option value="2">2 personnes</option>
-            <option value="3">3 personnes</option>
-            <option value="4">4 personnes</option>
-            <option value="5">5 personnes ou plus</option>
-        </select><br><br>
-
-        <label>Services supplémentaires :</label><br>
-        <input type="checkbox" name="services[]" value="terrasse"> Terrasse<br>
-        <input type="checkbox" name="services[]" value="privé"> Espace privé<br>
-        <input type="checkbox" name="services[]" value="menu_végétarien"> Menu végétarien<br><br>
-
-            </div>
-            <button id="submit">Submit</button>
+    <div id="confirmation">
+        <div class="message">
+            Votre demande de réservation est en cours de traitement.<br>
+            Merci pour votre confiance !
         </div>
     </div>
 
     <script>
-        document.getElementById('submit').addEventListener('click', () => {
-            const FiName = document.getElementById('fName').value.trim();
-            const laName = document.getElementById('lName').value.trim();
-            const email = document.getElementById('emailF').value.trim();
-            const paField = document.getElementById('passF').value.trim();
+        const form = document.getElementById('reservationForm');
+        const confirmation = document.getElementById('confirmation');
 
-            if(FiName === '' || laName === '' || email === '' || paField === '' || phone === ''|| data === ''|| time === '') {
-                alert('Veuillez remplir  les autres champs');
-            } else {
-                localStorage.setItem('firstName', FiName);
-                localStorage.setItem('lastName', laName);
-                   localStorage.setItem('time', time);
-				   localStorage.setItem('data',data);
-                localStorage.setItem('Cartes',Cartes);
-                window.location = 'thanks.html';
-            }
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            confirmation.style.display = 'flex';
         });
     </script>
 </body>
 
 </html>
-
-...
