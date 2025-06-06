@@ -1,48 +1,75 @@
-...
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image  touristique</title>
+    <title>Image Touristique</title>
     <link rel="stylesheet" href="style2.css">
 </head>
- 
+
 <body>
     <div class="wrapper">
         <div class="image-slider">
             <div class="slide-div">
-                <img src="image1.jpeg" alt="image1" class="img">
+                <img src="image1.jpeg" alt="Image 1" class="img">
                 <a href="#" class="button"></a>
             </div>
             <div class="slide-div">
-                <img src="image3.jpeg" alt="image2" class="img">
+                <img src="image3.jpeg" alt="Image 2" class="img">
                 <a href="#" class="button"></a>
             </div>
             <div class="slide-div">
-                <img src="image4.jpeg" alt="image3" class="img">
+                <img src="image4.jpeg" alt="Image 3" class="img">
                 <a href="#" class="button"></a>
             </div>
             <div class="slide-div">
-                <img src="image5.jpeg" alt="image4" class="img">
+                <img src="image5.jpeg" alt="Image 4" class="img">
                 <a href="#" class="button"></a>
             </div>
             <div class="slide-div">
-                <img src="image6.jpeg" alt="image5" class="img">
+                <img src="image6.jpeg" alt="Image 5" class="img">
                 <a href="#" class="button"></a>
             </div>
             <div class="slide-div">
-                <img src="image6.jpeg" alt="image6" class="img">
+                <img src="image6.jpeg" alt="Image 6" class="img">
                 <a href="#" class="button"></a>
             </div>
             <div class="slide-div">
-                <img src="image7.jpeg" alt="image7" class="img">
+                <img src="image7.jpeg" alt="Image 7" class="img">
                 <a href="#" class="button"></a>
             </div>
         </div>
     </div>
+    <script>
+        // Simple slider functionality for demonstration (optional)
+        const slider = document.querySelector('.image-slider');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+        });
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; //scroll-fast
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
 </body>
 
 </html>
-...
