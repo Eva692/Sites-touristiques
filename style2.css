@@ -1,90 +1,141 @@
-...
+```css name=style2.css
+/* General Reset */
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-html,
+/* Ajout de l'image en arrière-plan sur toute la page */
 body {
-	background: url('image2.jpeg') center;
+    min-height: 100vh;
+    width: 100vw;
+    background-image: url('image2.jpg');
     background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-ite
-    display: grid;
-    height: 100%;
-    place-items: center;
-    overflow: hidden;
-    background: linear-gradient(to right, rgb(255, 65, 100), rgb(255, 75, 43));
-}
-
-.wrapper {
-    width: 80%;
-    /* Reduced size of wrapper */
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-slider {
-    width: 100%;
-    height: 600px;
-    position: absolute;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.7s ease;
-}
-
-.slide-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 20px;
-}
-
-img {
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Optionnel: pour atténuer l'arrière-plan et améliorer la lisibilité du contenu */
     position: relative;
-    width: 170px;
-    height: 220px;
-    /* Adjust height proportionally */
-    object-fit: cover;
-    /* Fit the image properly */
-    transition: 0.5s;
-    filter: saturate(10%);
 }
 
+/* Optionnel : superposer un filtre pour améliorer le contraste */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.55); /* Ajustez l'opacité selon vos besoins */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Wrapper styling */
+.wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 16px;
+    position: relative;
+    z-index: 1; /* Pour que le contenu soit au-dessus du filtre */
+}
+
+/* Image slider styling */
+.image-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+    background: rgba(255,255,255,0.8);
+    border-radius: 12px;
+}
+
+.image-slider::-webkit-scrollbar {
+    height: 8px;
+}
+.image-slider::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+.image-slider::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Slide styling */
+.slide-div {
+    min-width: 300px;
+    flex: 0 0 auto;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    background: #fff;
+    transition: transform 0.3s;
+}
+.slide-div:hover {
+    transform: scale(1.03);
+}
+
+.img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Example button styling (hidden by default) */
 .button {
     position: absolute;
-    width: 150px;
-    height: 220px;
-    transition: 0.5s;
-    background-color: rgba(0, 0, 0, 0.4);
+    bottom: 14px;
+    right: 16px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.slide-div:hover .button {
+    opacity: 1;
 }
 
-.button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-
-    img,
-    .button {
-        width: calc(150px * 0.7);
-        height: calc(220px * 0.7);
+/* Responsive Design */
+@media (max-width: 900px) {
+    .slide-div {
+        min-width: 220px;
+    }
+    .img {
+        height: 150px;
     }
 }
 
-
-@media (max-width: 480px) {
-
-    img,
-    .button {
-        width: calc(150px * 0.5);
-        height: calc(220px * 0.5);
+@media (max-width: 600px) {
+    .image-slider {
+        gap: 10px;
+    }
+    .wrapper {
+        padding: 0 4px;
+    }
+    .slide-div {
+        min-width: 160px;
+    }
+    .img {
+        height: 100px;
     }
 }
-..
+
+/* Optional: Touch support for slider */
+.image-slider {
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+}
+.image-slider.active {
+    cursor: grabbing;
+}
+```
