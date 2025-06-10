@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    background: url('images/fond.jpg') center center fixed;
+    background-size: cover;
+    color: #ffeecf;
+    min-height: 100vh;
+    position: relative;
+}
+
+nav.navbar {
+    background: rgba(30, 30, 35, 0.95);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+nav .logo {
+    color: #FFD700;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 10px #111, 0 0 2px #FFD700;
+}
+nav ul.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+nav ul.nav-links li {
+    margin: 0;
+}
+nav ul.nav-links a {
+    color: #ffeecf;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s, border-bottom 0.3s;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 3px;
+}
+nav ul.nav-links a:hover,
+nav ul.nav-links a.active {
+    color: #FFD700;
+    border-bottom: 2px solid #FFD700;
+}
+
+.header {
+    padding: 5rem 2rem 2rem 2rem;
+    text-align: center;
+    background: rgba(30, 30, 35, 0.77);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+.header-content h1 {
+    font-size: 3rem;
+    color: #FFD700;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 12px #000, 0 1px 0 #FFD700;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+.header-content p {
+    font-size: 1.3rem;
+    margin: 0 auto;
+    color: #ffeecf;
+    max-width: 700px;
+    background: rgba(30, 30, 35, 0.60);
+    padding: 1.2rem;
+    border-radius: 14px;
+}
+
+.contenu-main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 0;
+    min-height: 60vh;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.2rem;
+    width: 95vw;
+    max-width: 1200px;
+}
+
+.photo {
+    background: rgba(30, 30, 35, 0.92);
+    border-radius: 18px;
+    box-shadow: 0 5px 24px rgba(0,0,0,0.10);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+}
+.photo:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 16px 40px rgba(255,215,0,0.13);
+}
+.photo img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 2px solid #FFD700;
+    transition: filter 0.3s;
+}
+.photo:hover img {
+    filter: brightness(1.08) saturate(1.1);
+}
+.legende-photo {
+    padding: 1rem 0.5rem;
+    background: rgba(30, 30, 35, 0.85);
+    color: #FFD700;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 6px #000;
+}
+
+/* Footer */
+footer {
+    position: relative;
+    width: 100%;
+    background: rgba(30, 30, 35, 0.97);
+    color: #FFD700;
+    text-align: center;
+    padding: 1.2rem 0 1.1rem 0;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin-top: 2.5rem;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.11);
+}
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    font-weight: 600;
+    text-shadow: 1px 1px 5px #000;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    nav .container { padding: 0.7rem 1rem; }
+    .header-content h1 { font-size: 2.3rem; }
+    .header-content p { font-size: 1rem; }
+    .gallery { gap: 1.2rem; }
+}
+@media (max-width: 800px) {
+    nav .container { flex-direction: column; gap: 1rem;}
+    .header-content h1 { font-size: 1.8rem; }
+    .header-content p { font-size: 0.95rem; }
+    .gallery { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+}
+@media (max-width: 650px) {
+    .header { padding: 2rem 0.4rem 1rem 0.4rem; }
+    .header-content h1 { font-size: 1.2rem; }
+    .header-content p { font-size: 0.9rem; }
+    nav .logo { font-size: 1rem;}
+    .gallery { gap: 0.6rem; }
+}
+@media (max-width: 420px) {
+    .footer-content { font-size: 0.9rem;}
+    .header { padding: 1.1rem 0.2rem 1.1rem 0.2rem;}
+    .header-content p { font-size: 0.8rem;}
+    .gallery { grid-template-columns: 1fr; gap: 0.5rem;}
+}
