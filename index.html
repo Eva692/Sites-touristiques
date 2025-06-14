@@ -5,11 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'Accueil - Bobo Dioulasso</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Ajout de styles pour le logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-img {
+            height: 50px; /* Ajustez la taille selon vos besoins */
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <nav>
         <div class="container">
-            <div class="logo">Bobo-Dioulasso</div>
+            <div class="logo-container">
+                <!-- Logo depuis Pixabay -->
+                <img src="https://cdn.pixabay.com/photo/2020/06/19/13/45/box-5279529_1280.png" 
+                     alt="Logo Bobo-Dioulasso" 
+                     class="logo-img">
+                <div class="logo-text">Bobo-Dioulasso</div>
+            </div>
             <input type="checkbox" id="menu-toggle" class="menu-toggle" />
             <label for="menu-toggle" class="menu-icon" aria-label="Ouvrir le menu">
                 <span></span>
@@ -20,7 +44,7 @@
                 <li><a href="ACCUEIL.html" class="active">Accueil</a></li>
                 <li><a href="patrimoine.html">Patrimoine</a></li>
                 <li><a href="Reservation.html">Réservation d'hôtel</a></li>
-                <li><a href="#">Galerie</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
             </ul>
         </div>
     </nav>
@@ -32,9 +56,9 @@
                 Bobo-Dioulasso est la deuxième ville la plus peuplée du Burkina Faso, située dans la région des Hauts-Bassins.<br>
                 Véritable centre économique et culturel, elle mêle harmonieusement héritage colonial et traditions locales.<br>
                 Abritant une architecture remarquable, des marchés animés et divers événements culturels tels que la semaine nationale de la culture, la ville incarne un carrefour dynamique pour le commerce, les transports et la vie sociale.<br>
-                Sa croissance démographique constante et sa vitalité culturelle en font un symbole fort de modernité au cœur d’un passé riche.<br>
+                Sa croissance démographique constante et sa vitalité culturelle en font un symbole fort de modernité au cœur d'un passé riche.<br>
                 <span class="invite">
-                    Si tu souhaites explorer d’autres aspects de cette ville ou connaître des détails sur ses lieux incontournables, n’hésite pas à le mentionner !
+                    Si tu souhaites explorer d'autres aspects de cette ville ou connaître des détails sur ses lieux incontournables, n'hésite pas à le mentionner !
                 </span>
             </p>
         </section>
