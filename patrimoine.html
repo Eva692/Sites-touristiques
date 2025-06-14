@@ -2,82 +2,104 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patrimoine - Bobo-Dioulasso</title>
     <link rel="stylesheet" href="style3.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">Bobo-Dioulasso</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="patrimoine.html" class="active">Patrimoine</a></li>
-                <li><a href="Reservation.html">Réservation d'hôtel</a></li>
-                <li><a href="galerie.html">Galerie</a></li>
-            </ul>
-        </div>
-    </nav>
-    <header class="header">
-        <div class="header-content">
-            <h1>PATRIMOINE DE BOBO-DIOULASSO</h1>
-            <p>Découvrez les trésors culturels, naturels et spirituels de la ville</p>
-        </div>
-    </header>
-    <main class="contenu-main">
-        <section class="gallery">
-            <div class="photo">
-               <a href ="images/mosque1.jpg" alt="Grande Mosquée">
-                    <div class="legende-photo">Grande Mosquée</div>
-                </a>
-            </div>
-            <div class="photo">
-                <a href="musée.html">
-                    <img src="image6.jpeg" alt="musée">
-                    <div class="legende-photo">Le musée Sogossira Sanou</div>
-                </a>
-            </div>
-            <div class="photo">
-                <a href="marche_fruit.html">
-                    <img src="images/marche_fruit.jpg" alt="Marché de fruit">
-                    <div class="legende-photo">Marché de fruit et de legumes</div>
-                </a>
-            </div>
-            <div class="photo">
-                <a href="village.html">
-                    <img src="images/village.jpg" alt="Village de Koro">
-                    <div class="legende-photo">Village perché de Koro</div>
-                </a>
-            </div>
-            <div class="photo">
-                <a href="maison_culture.html">
-                    <img src="images/maison_culture.jpg" alt="Maison de la culture">
-                    <div class="legende-photo">La maison de la culture</div>
-                </a>
-            </div>
-            <div class="photo">
-                <a href="masque.html">
-                    <img src="images/masque.jpg" alt="Les masques">
-                    <div class="legende-photo">Les masques de Bobo-Dioulasso</div>
-                </a>
-            </div>
-            <div class="photo">
-                <a href="grand_marché.html">
-                    <img src="images/marché.jpg" alt="Grand marché">
-                    <div class="legende-photo">Le grand marché de Bobo-Dioulasso</div>
-                </a>
-            </div>
-            <div class="photo">
-                <a href="silure.html">
-                    <img src="images/silure.jpg" alt="silure">
-                    <div class="legende-photo">Les silures sacrés de Bobo-Dioulasso</div>
-                </a>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="footer-content">
-            &copy; 2025 Découverte du Patrimoine de Bobo-Dioulasso. Tous droits réservés.
-        </div>
-    </footer>
-</body>
-</html>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f39c12;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #f39c12;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), url('images/header-bobo.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .header-content {
+            width: 100%;
+            padding: 0 20px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 1px 
