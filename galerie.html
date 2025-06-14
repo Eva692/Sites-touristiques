@@ -4,128 +4,190 @@
     <meta charset="UTF-8">
     <title>Galerie - Bobo-Dioulasso</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Lien externe pour les icônes, améliore le visuel et l'accessibilité -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Améliorations et responsive directement dans le fichier pour exemple.
-           Déplacez dans style.css si voulu. */
-
         body {
             margin: 0;
             background-image: url('images/fond.jpg');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             min-height: 100vh;
+            color: #222;
         }
         .navbar {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            background: rgba(35, 35, 35, 0.8);
+            background: rgba(35, 35, 35, 0.88);
             padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.10);
         }
         .navbar a {
             color: #fff;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             letter-spacing: 1px;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 4px;
-            transition: background 0.2s;
+            transition: background 0.22s, color 0.22s;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
         }
         .navbar a.active,
         .navbar a:hover {
-            background: #ffbf00;
+            background: #ffe376;
             color: #222;
+            box-shadow: 0 2px 8px rgba(34,34,34,0.10);
         }
         .header {
             text-align: center;
-            background: rgba(255, 255, 255, 0.85);
-            padding: 2rem 1rem 1rem 1rem;
-            margin-bottom: 2rem;
-            border-radius: 0 0 16px 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            max-width: 900px;
+            background: rgba(255, 255, 255, 0.93);
+            padding: 2.5rem 1rem 1.5rem 1rem;
+            margin-bottom: 2.5rem;
+            border-radius: 0 0 22px 22px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            max-width: 950px;
             margin-left: auto;
             margin-right: auto;
         }
         .header h1 {
-            margin: 0 0 0.5em;
-            font-size: 2.3rem;
+            margin: 0 0 0.6em;
+            font-size: 2.5rem;
             color: #27496d;
+            letter-spacing: 1px;
         }
         .header p {
             margin: 0;
-            color: #555;
-            font-size: 1.2rem;
+            color: #444;
+            font-size: 1.23rem;
         }
         .galerie {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto 2rem auto;
-            background: rgba(255,255,255,0.90);
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 2.5rem 2rem;
+            max-width: 1250px;
+            margin: 0 auto 2.5rem auto;
+            background: rgba(255,255,255,0.92);
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
         }
         .img {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #f6f6f6;
-            border-radius: 10px;
+            background: #f7f7f7;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 1px 6px rgba(0,0,0,0.07);
-            transition: transform 0.15s;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.10);
+            transition: transform 0.17s, box-shadow 0.17s;
+            position: relative;
         }
-        .img:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 4px 18px rgba(33,33,33,0.13);
+        .img:hover, .img:focus-within {
+            transform: translateY(-6px) scale(1.035);
+            box-shadow: 0 6px 22px rgba(33,33,33,0.16);
         }
         .img img {
             width: 100%;
-            height: 180px;
+            height: 190px;
             object-fit: cover;
             display: block;
+            transition: filter 0.18s;
+        }
+        .img:hover img, .img:focus-within img {
+            filter: brightness(0.94) contrast(1.04);
         }
         .legende-photo {
             text-align: center;
-            padding: 0.7rem 0.5rem;
-            font-size: 1rem;
+            padding: 0.85rem 0.7rem;
+            font-size: 1.07rem;
             font-style: italic;
-            color: #333;
-            background: #ffe376;
+            color: #2d2d2d;
+            background: linear-gradient(90deg, #ffe376 60%, #fff9c4 100%);
             width: 100%;
+            border-top: 1px solid #f0e5b2;
         }
-
-        @media (max-width: 900px) {
+        .img .zoom-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ffe376;
+            border: none;
+            border-radius: 50%;
+            padding: 0.45em 0.55em;
+            cursor: pointer;
+            box-shadow: 0 1px 6px rgba(0,0,0,0.16);
+            transition: background 0.15s;
+        }
+        .img .zoom-btn:hover {
+            background: #ffe376cc;
+        }
+        /* Lightbox styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.82);
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 92vw;
+            max-height: 80vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 40px #0008;
+        }
+        .lightbox .close-btn {
+            position: absolute;
+            top: 2.5vh;
+            right: 3vw;
+            font-size: 2.3rem;
+            color: #ffe376;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: color 0.18s;
+        }
+        .lightbox .close-btn:hover {
+            color: #fff;
+        }
+        @media (max-width: 950px) {
             .galerie {
-                gap: 1.2rem;
-                padding: 1rem;
+                gap: 1.3rem;
+                padding: 1.2rem;
             }
             .header {
-                padding: 1.2rem 0.5rem 0.5rem 0.5rem;
+                padding: 1.3rem 0.5rem 0.7rem 0.5rem;
             }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
             .navbar {
                 flex-direction: column;
                 gap: 0.5rem;
                 padding: 0.7rem 0;
             }
             .header h1 {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
             }
             .header p {
-                font-size: 1rem;
+                font-size: 1.02rem;
             }
             .galerie {
                 grid-template-columns: 1fr;
-                gap: 1rem;
-                padding: 0.3rem;
+                gap: 1.1rem;
+                padding: 0.35rem;
             }
             .img img {
                 height: 140px;
@@ -134,12 +196,11 @@
     </style>
 </head>
 <body>
-
-    <nav class="navbar">
-        <a href="index.html">Accueil</a>
-        <a href="patrimoine.html">Patrimoine</a>
-        <a href="Reservation.html">Réservation d'hôtel</a>
-        <a href="galerie.html" class="active">Galerie</a>
+    <nav class="navbar" aria-label="Navigation principale">
+        <a href="index.html"><i class="fa fa-home"></i>Accueil</a>
+        <a href="patrimoine.html"><i class="fa fa-landmark"></i>Patrimoine</a>
+        <a href="Reservation.html"><i class="fa fa-bed"></i>Réservation d'hôtel</a>
+        <a href="galerie.html" class="active"><i class="fa fa-image"></i>Galerie</a>
     </nav>
     <header class="header">
         <h1>GALERIE DE BOBO-DIOULASSO</h1>
@@ -147,49 +208,104 @@
     </header>
     <main class="galerie">
         <div class="img">
-            <img src="images/mosque1.JPG" alt="Grande mosquée Bobo-Dioulasso" loading="lazy">
+            <img src="images/mosque1.JPG" alt="Grande mosquée Bobo-Dioulasso" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">Grande Mosquée de Dioulassoba</p>
         </div>
         <div class="img">
-            <img src="images/village.jpg" alt="Village de Koro" loading="lazy">
+            <img src="images/village.jpg" alt="Village de Koro" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">Le village perché de Koro</p>
         </div>
         <div class="img">
-            <img src="images/marche_fruit.jpg" alt="marché de fruit et legumes" loading="lazy">
+            <img src="images/marche_fruit.jpg" alt="marché de fruit et legumes" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">Le marché de fruits et de légumes</p>
         </div>
         <div class="img">
-            <img src="images/grand_marché.jpg" alt="grand marché de Bobo" loading="lazy">
+            <img src="images/grand_marché.jpg" alt="grand marché de Bobo" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">Le grand marché de Bobo-Dioulasso</p>
         </div>
         <div class="img">
-            <img src="images/village.jpg" alt="Koro" loading="lazy">
+            <img src="images/village.jpg" alt="Koro" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">Le village perché de Koro</p>
         </div>
         <div class="img">
-            <img src="images/barrage.webp" alt="barrage" loading="lazy">
+            <img src="images/barrage.webp" alt="barrage" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">Le barrage de Samandeni</p>
         </div>
         <div class="img">
-            <img src="images/hosto.jpg" alt="hopital" loading="lazy">
+            <img src="images/hosto.jpg" alt="hopital" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">L'un des plus grands hôpitaux de la sous-région (toujours en construction)</p>
         </div>
         <div class="img">
-            <img src="images/quatier.JPG" alt="Dioulassoba" loading="lazy">
+            <img src="images/quatier.JPG" alt="Dioulassoba" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">Le quartier de Dioulassoba</p>
         </div>
         <div class="img">
-            <img src="images/hotel_ville.jpg" alt="hôtel de ville" loading="lazy">
+            <img src="images/hotel_ville.jpg" alt="hôtel de ville" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">L'hôtel de ville</p>
         </div>
         <div class="img">
-            <img src="images/catedral.jpg" alt="cathédrale" loading="lazy">
+            <img src="images/catedral.jpg" alt="cathédrale" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">La cathédrale Notre-Dame de Lourdes</p>
         </div>
         <div class="img">
-            <img src="images/maison_culture.jpg" alt="maison de la culture" loading="lazy">
+            <img src="images/maison_culture.jpg" alt="maison de la culture" loading="lazy" tabindex="0">
+            <button class="zoom-btn" aria-label="Agrandir l'image"><i class="fa fa-search-plus"></i></button>
             <p class="legende-photo">La maison de la culture</p>
         </div>
     </main>
+    <!-- Lightbox pour zoomer sur les images -->
+    <div id="lightbox" class="lightbox" tabindex="-1" aria-modal="true" role="dialog">
+        <button class="close-btn" aria-label="Fermer la vue agrandie"><i class="fa fa-times"></i></button>
+        <img src="" alt="Image agrandie" id="lightbox-img">
+    </div>
+    <script>
+        // Lightbox JS pour l'ouverture/fermeture
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.lightbox .close-btn');
+        document.querySelectorAll('.img img, .img .zoom-btn').forEach(el => {
+            el.addEventListener('click', function(e) {
+                const img = el.tagName === 'IMG' ? el : el.parentElement.querySelector('img');
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || 'Image agrandie';
+                lightbox.classList.add('active');
+                lightbox.focus();
+            });
+            el.addEventListener('keypress', function(e) {
+                if ((e.key === 'Enter' || e.key === ' ') && el.tagName === 'IMG') {
+                    lightboxImg.src = el.src;
+                    lightboxImg.alt = el.alt || 'Image agrandie';
+                    lightbox.classList.add('active');
+                    lightbox.focus();
+                }
+            });
+        });
+        closeBtn.addEventListener('click', function() {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+        });
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) { // close when clicking outside the image
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+            }
+        });
+    </script>
 </body>
 </html>
