@@ -2,29 +2,245 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Les silures sacrés de Bobo</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silures Sacrés de Bobo-Dioulasso | Patrimoine Culturel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: url('image2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            background-color: rgba(44, 62, 80, 0.9);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1.5rem;
+            margin: 0.3rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .navbar a:hover, .navbar a.active {
+            color: #f39c12;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 5rem 1rem 3rem;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Contenu principal */
+        .contenu-principal {
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            padding: 0 1.5rem;
+        }
+
+        .description {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+        }
+
+        .image:hover {
+            transform: scale(1.02);
+        }
+
+        .description p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Bouton retour */
+        .boutton-retour {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .boutton-retour a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 1.8rem;
+            background-color: #f39c12;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .boutton-retour a:hover {
+            background-color: #e67e22;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .boutton-retour a i {
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(44, 62, 80, 0.9);
+            margin-top: 3rem;
+            backdrop-filter: blur(5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.8rem;
+            }
+            
+            .navbar a {
+                padding: 0.7rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .header {
+                padding: 3rem 1rem;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .description {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .navbar a {
+                width: 100%;
+                margin: 0.2rem 0;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .description {
+                padding: 1.2rem;
+            }
+
+            .boutton-retour a {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
-<body style="margin: 0; background-image: url('image2.jpg'); background-size: cover; background-attachment: fixed; background-position: center;">
+<body>
     <nav class="navbar">
-        <a href="index.html">Accueil</a>
-        <a href="patrimoine.html" class="active">Patrimoine</a>
-        <a href="Reservation.html">Réservation d'hôtel</a>
-        <a href="galerie.html">Galerie</a>
+        <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+        <a href="patrimoine.html" class="active"><i class="fas fa-landmark"></i> Patrimoine</a>
+        <a href="Reservation.html"><i class="fas fa-hotel"></i> Réservation d'hôtel</a>
+        <a href="galerie.html"><i class="fas fa-images"></i> Galerie</a>
     </nav>
+    
     <header class="header">
-        <h1>Les silures sacrés de Bobo-Dioulasso</h1>
-        <p>Le symbole de la ville</p>
+        <h1>Les Silures Sacrés de Bobo-Dioulasso</h1>
+        <p>Gardiennes mystiques des traditions ancestrales</p>
     </header>
+    
     <main class="contenu-principal">
         <div class="description">
-            <img src="images/silure.jpg" alt="Silure sacrés" class="image">
-            <p>À quelques kilomètres du centre-ville se trouve Dafra, un site naturel sacré où vivent des silures géants considérés comme des poissons sacrés. Ces animaux ne peuvent être ni pêchés ni touchés, sous peine de malédiction. Les habitants y pratiquent des rituels et offrandes dans le respect des traditions animistes. Le site est entouré d’une végétation luxuriante et baigné de légendes.</p>
-            <p>C’est un lieu mystique, calme et respecté, mêlant nature et spiritualité.</p>
+            <img src="images/silure.jpg" alt="Silures sacrés de Dafra" class="image">
+            <p>À quelques kilomètres du centre-ville se trouve le site sacré de Dafra, sanctuaire naturel abritant des silures géants vénérés comme des êtres divins. Ces créatures majestueuses, protégées par des interdits séculaires, ne peuvent être ni pêchées ni touchées sous peine d'attirer la malédiction. Les habitants pratiquent régulièrement des rituels et offrandes selon les traditions animistes, perpétuant ainsi un héritage spirituel millénaire.</p>
+            <p>Enveloppé d'une végétation luxuriante et baigné de légendes mystérieuses, Dafra constitue un havre de paix où se mêlent harmonieusement nature et spiritualité. Ce lieu sacré, empreint de sérénité et de respect, représente bien plus qu'un simple plan d'eau : c'est le cœur battant de l'identité culturelle de Bobo-Dioulasso, un pont entre le monde visible et invisible, entre les hommes et les forces de la nature.</p>
         </div>
+        
         <div class="boutton-retour">
-            <a href="patrimoine.html">← Retour au patrimoine</a>
+            <a href="patrimoine.html"><i class="fas fa-arrow-left"></i> Retour au patrimoine</a>
         </div>
     </main>
+    
+    <footer>
+        <p>&copy; 2023 Patrimoine de Bobo-Dioulasso | Tous droits réservés</p>
+    </footer>
 </body>
 </html>
