@@ -3,17 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <title>Patrimoine - Bobo-Dioulasso</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- FontAwesome for icons (optional, can remove if not wanted) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style3.css">
+    <style>
+        /* RESET & BASE */
+        *, *::before, *::after { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #232323;
+            background: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        a { color: inherit; text-decoration: none; transition: color 0.18s; }
+        a:hover { color: #ffbf00; }
+
+        /* NAVBAR */
+        .navbar {
+            background: #2d3952;
+            color: #fff;
+            padding: 0.6rem 0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.2rem;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links li {
+            display: flex;
+        }
+        .nav-links a {
+            padding: 0.4rem 1.1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 1.07rem;
+            transition: background 0.18s, color 0.18s;
+            display: flex;
+            align-items: center;
+            gap: 0.45em;
+        }
+        .nav-links a.active,
+        .nav-links a:hover {
+            background: #ffe376;
+            color: #222;
+        }
+
+        /* HEADER */
+        .header {
+            background: linear-gradient(90deg, #ffe376 60%, #fffbe7 100%);
+            text-align: center;
+            padding: 2.5rem 1rem 1.5rem 1rem;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            max-width: 950px;
+            margin: 0 auto 2rem auto;
+        }
+        .header-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.7rem;
+            color: #27496d;
+            letter-spacing: 1px;
+        }
+        .header-content p {
+            font-size: 1.18rem;
+            color: #444;
+        }
+
+        /* MAIN CONTENT */
+        .contenu-main {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255,255,255,0.98);
+            padding: 2.5rem 2rem;
+            margin: 0 auto 2.5rem auto;
+            border-radius: 20px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+        }
+        .photo {
+            background: #f7f7f7;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+            transition: transform 0.17s, box-shadow 0.17s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .photo:hover, .photo:focus-within {
+            transform: translateY(-6px) scale(1.035);
+            box-shadow: 0 6px 22px rgba(33,33,33,0.14);
+        }
+        .photo img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            transition: filter 0.18s;
+        }
+        .photo:hover img, .photo:focus-within img {
+            filter: brightness(0.94) contrast(1.04);
+        }
+        .legende-photo {
+            text-align: center;
+            padding: 0.85rem 0.7rem;
+            font-size: 1.08rem;
+            font-style: italic;
+            color: #2d2d2d;
+            background: #ffe376;
+            width: 100%;
+            border-top: 1px solid #f0e5b2;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2d3952;
+            color: #fffbe7;
+            text-align: center;
+            padding: 1.3rem 0 1.1rem 0;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1000px) {
+            .container { padding: 0 1rem; }
+            .gallery { gap: 1.2rem; padding: 1.7rem 0.7rem; }
+            .header { padding: 1.5rem 0.5rem 1rem 0.5rem; }
+        }
+        @media (max-width: 700px) {
+            .nav-links { gap: 1rem; }
+            .header-content h1 { font-size: 1.4rem; }
+            .header-content p { font-size: 1rem; }
+            .gallery { grid-template-columns: 1fr; gap: 1.2rem; padding: 0.5rem; }
+            .photo img { height: 130px; }
+        }
+        @media (max-width: 550px) {
+            .container { flex-direction: column; align-items: flex-start; }
+            .logo { margin-bottom: 0.6rem; }
+            .nav-links { flex-direction: column; gap: 0.4rem; width: 100%; }
+            .header { padding: 0.7rem 0.3rem; }
+            footer { font-size: 0.93rem; padding: 1rem 0; }
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Navigation principale">
         <div class="container">
             <div class="logo">Bobo-Dioulasso</div>
             <ul class="nav-links">
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="patrimoine.html" class="active">Patrimoine</a></li>
-                <li><a href="reservation.html">Réservation d'hôtel</a></li>
-                <li><a href="galerie.html">Galerie</a></li>
+                <li><a href="index.html"><i class="fa fa-home"></i>Accueil</a></li>
+                <li><a href="patrimoine.html" class="active"><i class="fa fa-landmark"></i>Patrimoine</a></li>
+                <li><a href="reservation.html"><i class="fa fa-bed"></i>Réservation d'hôtel</a></li>
+                <li><a href="galerie.html"><i class="fa fa-image"></i>Galerie</a></li>
             </ul>
         </div>
     </nav>
@@ -27,49 +202,49 @@
         <section class="gallery">
             <div class="photo">
                 <a href="mosquee.html">
-                    <img src="images/mosque1.JPG" alt="Grande Mosquée">
+                    <img src="images/mosque1.JPG" alt="Grande Mosquée" loading="lazy">
                     <div class="legende-photo">Grande Mosquée</div>
                 </a>
             </div>
             <div class="photo">
                 <a href="musée.html">
-                    <img src="image6.jpeg" alt="musée">
+                    <img src="image6.jpeg" alt="musée" loading="lazy">
                     <div class="legende-photo">Le musée Sogossira Sanou</div>
                 </a>
             </div>
             <div class="photo">
                 <a href="marche_fruit.html">
-                    <img src="images/marche_fruit.jpg" alt="Marché de fruit">
+                    <img src="images/marché.jpg" alt="Marché de fruit" loading="lazy">
                     <div class="legende-photo">Marché de fruit et de legumes</div>
                 </a>
             </div>
             <div class="photo">
                 <a href="village.html">
-                    <img src="images/village.jpg" alt="Village de Koro">
+                    <img src="images/village.jpg" alt="Village de Koro" loading="lazy">
                     <div class="legende-photo">Village perché de Koro</div>
                 </a>
             </div>
             <div class="photo">
                 <a href="maison_culture.html">
-                    <img src="images/maison_culture.jpg" alt="Maison de la culture">
+                    <img src="images/maison_culture.jpg" alt="Maison de la culture" loading="lazy">
                     <div class="legende-photo">La maison de la culture</div>
                 </a>
             </div>
             <div class="photo">
                 <a href="masque.html">
-                    <img src="images/masque.jpg" alt="Les masques">
+                    <img src="images/masque.jpg" alt="Les masques" loading="lazy">
                     <div class="legende-photo">Les masques de Bobo-Dioulasso</div>
                 </a>
             </div>
             <div class="photo">
                 <a href="grand_marché.html">
-                    <img src="images/marché.jpg" alt="Grand marché">
+                    <img src="images/marché.jpg" alt="Grand marché" loading="lazy">
                     <div class="legende-photo">Le grand marché de Bobo-Dioulasso</div>
                 </a>
             </div>
             <div class="photo">
                 <a href="silure.html">
-                    <img src="images/silure.jpg" alt="silure">
+                    <img src="images/silure.jpg" alt="silure" loading="lazy">
                     <div class="legende-photo">Les silures sacrés de Bobo-Dioulasso</div>
                 </a>
             </div>
