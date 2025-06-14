@@ -235,3 +235,31 @@ footer {
     .hero p { font-size: 0.85rem;}
     .invite { font-size: 0.96rem;}
 }
+/* Ajoutez ceci à votre style.css pour styliser l'endroit du logo */
+.logo-spot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-logo {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.logo-spot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.main-logo {
+    max-width: 150px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
