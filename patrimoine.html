@@ -16,8 +16,22 @@
         
         body {
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            color: white;
+            background: url('images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
         }
         
         .container {
@@ -29,13 +43,14 @@
         
         /* Navigation */
         .navbar {
-            background-color: #2c3e50;
+            background-color: rgba(44, 62, 80, 0.9);
             color: white;
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
         }
         
         .navbar .container {
@@ -78,7 +93,6 @@
         
         /* Header */
         .header {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
             height: 60vh;
             display: flex;
             align-items: center;
@@ -107,6 +121,10 @@
         /* Galerie */
         .contenu-main {
             padding: 50px 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            margin: 20px;
+            backdrop-filter: blur(5px);
         }
         
         .gallery {
@@ -120,14 +138,16 @@
             position: relative;
             overflow: hidden;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
             aspect-ratio: 4/3;
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         .photo:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            border-color: #f39c12;
         }
         
         .photo img {
@@ -154,25 +174,25 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
             padding: 15px;
             font-weight: bold;
             text-align: center;
-            opacity: 0;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
         }
         
         .photo:hover .legende-photo {
-            opacity: 1;
+            background: linear-gradient(to top, rgba(243, 156, 18, 0.9), transparent);
         }
         
         /* Footer */
         footer {
-            background-color: #2c3e50;
+            background-color: rgba(44, 62, 80, 0.9);
             color: white;
             text-align: center;
             padding: 20px 0;
             margin-top: 50px;
+            backdrop-filter: blur(5px);
         }
         
         .footer-content {
@@ -191,11 +211,12 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 70px);
-                background-color: #2c3e50;
+                background-color: rgba(44, 62, 80, 0.95);
                 flex-direction: column;
                 align-items: center;
                 padding-top: 30px;
                 transition: left 0.3s;
+                backdrop-filter: blur(10px);
             }
             
             .nav-links.active {
@@ -217,6 +238,11 @@
             .gallery {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
                 gap: 15px;
+            }
+
+            .contenu-main {
+                margin: 10px;
+                padding: 30px 0;
             }
         }
         
@@ -262,50 +288,50 @@
         <div class="container">
             <section class="gallery">
                 <div class="photo">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/400x300?text=Grande+Mosquée" alt="Grande Mosquée">
+                    <a href="images/mosque1.jpg">
+                        <img src="images/mosque1.jpg" alt="Grande Mosquée">
                         <div class="legende-photo">Grande Mosquée</div>
                     </a>
                 </div>
                 <div class="photo">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/400x300?text=Musée+Sogossira+Sanou" alt="Musée Sogossira Sanou">
+                    <a href="musée.html">
+                        <img src="image6.jpeg" alt="Musée Sogossira Sanou">
                         <div class="legende-photo">Le musée Sogossira Sanou</div>
                     </a>
                 </div>
                 <div class="photo">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/400x300?text=Marché+de+fruits" alt="Marché de fruits">
+                    <a href="marche_fruit.html">
+                        <img src="images/marche_fruit.jpg" alt="Marché de fruits">
                         <div class="legende-photo">Marché de fruits et légumes</div>
                     </a>
                 </div>
                 <div class="photo">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/400x300?text=Village+de+Koro" alt="Village de Koro">
+                    <a href="village.html">
+                        <img src="images/village.jpg" alt="Village de Koro">
                         <div class="legende-photo">Village perché de Koro</div>
                     </a>
                 </div>
                 <div class="photo">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/400x300?text=Maison+de+la+culture" alt="Maison de la culture">
+                    <a href="maison_culture.html">
+                        <img src="images/maison_culture.jpg" alt="Maison de la culture">
                         <div class="legende-photo">La maison de la culture</div>
                     </a>
                 </div>
                 <div class="photo">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/400x300?text=Masques+traditionnels" alt="Masques traditionnels">
+                    <a href="masque.html">
+                        <img src="images/masque.jpg" alt="Masques traditionnels">
                         <div class="legende-photo">Les masques de Bobo-Dioulasso</div>
                     </a>
                 </div>
                 <div class="photo">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/400x300?text=Grand+marché" alt="Grand marché">
+                    <a href="grand_marché.html">
+                        <img src="images/marché.jpg" alt="Grand marché">
                         <div class="legende-photo">Le grand marché de Bobo-Dioulasso</div>
                     </a>
                 </div>
                 <div class="photo">
-                    <a href="#">
-                        <img src="https://via.placeholder.com/400x300?text=Silures+sacrés" alt="Silures sacrés">
+                    <a href="silure.html">
+                        <img src="images/silure.jpg" alt="Silures sacrés">
                         <div class="legende-photo">Les silures sacrés de Bobo-Dioulasso</div>
                     </a>
                 </div>
@@ -334,15 +360,4 @@
         
         // Animation au défilement
         window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(44, 62, 80, 0.9)';
-                navbar.style.padding = '10px 0';
-            } else {
-                navbar.style.background = '#2c3e50';
-                navbar.style.padding = '15px 0';
-            }
-        });
-    </script>
-</body>
-</html>
+            const navbar = docume
